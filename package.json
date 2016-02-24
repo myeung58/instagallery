@@ -1,0 +1,16 @@
+{
+  "name": "instagallery",
+  "version": "0.1.0",
+  "description": "instagallery - michael",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twitsprout/instagallery"
+  },
+  "author": "CrowdRiff",
+  "license": "None",
+  "private": true,
+  "dependencies": {
+    "express": "^4.12.4"
+  }
+}
