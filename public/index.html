@@ -1,0 +1,45 @@
+<html ng-app="Instagallery">
+  <head>
+    <title>Instagallery</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+  </head>
+  <body ng-controller="mainController">
+    <div class="search">
+      <form class="search-bar" ng-submit="searchFor(search.content)">
+        <input class="search-bar-content" type="text" placeholder="#hashtag" ng-model="search.content" required>
+        <i class="fa fa-search fa-2x search-bar-submit" ng-click="searchFor(search.content)"></i>
+      </form>
+
+      <p class="loading text" ng-show="showLoadingText">...searching</p>
+    </div>
+
+    <div class="result" ng-show="render.searchResults">
+      <p class="result-title">Search results for {{searchTerm}}</p>
+
+      <div class="result-content">
+        <div class="result-content-item" ng-repeat="item in searchResults">
+          <div class="result-item" ng-mouseenter="renderResultDetail(item)" ng-mouseleave="hideResultDetail(item)">
+            <a class="result-link" href="{{item.link}}" target="_blank"><img class="result-image" src="{{item.image}}"></a>
+
+            <a class="result-link" href="{{item.link}}" target="_blank">
+              <div class="result-detail" ng-show="currentResultItem === item && render.itemDetail">
+
+                  <i class="fa fa-heart fa-2x result-detail-likes"></i>
+                  <p class="result-detail-like-count">{{item.likes}}</p>
+
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+
+  <script src="/javascript/angularApp.js"></script>
+  <script type="text/javascript" src="/javascript/services/requestService.js"></script>
+  <script type="text/javascript" src="/javascript/controllers/mainController.js"></script>
+</html>
